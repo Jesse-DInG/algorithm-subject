@@ -1,0 +1,27 @@
+{
+  "name": "algorithm-subject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "big_num_add.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jesse-DInG/algorithm-subject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jesse-DInG/algorithm-subject/issues"
+  },
+  "homepage": "https://github.com/Jesse-DInG/algorithm-subject#readme",
+  "dependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
