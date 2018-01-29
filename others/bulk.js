@@ -51,7 +51,7 @@ class BulkHandler {
     this[_stateMap].set(sObj.key, sObj)
     for (let i = 1; i <= MAX_WALK; i++) {
       const result = this[_walk](i)
-      this.printStateMap(i)
+      //   this.printStateMap(i)
       if (result) {
         return result
       }
@@ -133,8 +133,8 @@ class BulkHandler {
     this[_target] = target
   }
 }
-
-const bulk = new BulkHandler()
-const result = bulk.exec([12, 8, 3], [12, 0, 0], 6)
-console.log(`result: ${result}`)
+module.exports = BulkHandler
+// const bulk = new BulkHandler()
+// const result = bulk.exec([12, 8, 3], [12, 0, 0], 6)
+// console.log(`result: ${result}`)
 // bulk.exec([12, 8, 3], [9, 3, 0], 6)
