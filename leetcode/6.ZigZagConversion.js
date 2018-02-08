@@ -17,25 +17,37 @@ convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
  * @return {string}
  */
 var convert = function (s, numRows) {
-  let isOdd = numRows % 2 === 0
-  let count = isOdd ? numRows : numRows + 1
-
-  let midRow = ~~(numRows / 2)
-  let totalCol = ~~(s.length / count) + 1
+  let count = numRows * 2 - 2
+  let colCount = numRows - 1
+  if (numRows === 1) {
+    // special
+    count = colCount = 1
+  }
+  let totalCol = (~~(s.length / count)) * colCount
+  let restCount = s.length % count
+  if (restCount > 0) {
+    // left col
+    totalCol++
+  }
+  if (restCount > numRows) {
+    // rest col count
+    totalCol += restCount - numRows
+  }
   let result = []
   for (let i = 0; i < numRows; i++) {
     for (let j = 0; j < totalCol; j++) {
-      result.push(s.charAt(count * j + i))
-      if (i === midRow && !isOdd) {
-        result.push(s.charAt(count * j + numRows))
+      let col = ~~(j / colCount)
+      let subCol = j % colCount
+      if (subCol === 0) {
+        result.push(s.charAt(col * count + i))
+      } else {
+        if (i + subCol === colCount) {
+          result.push(s.charAt(col * count + numRows + subCol - 1))
+        }
       }
     }
   }
   return result.join('')
 }
-// 'PAHNALIGYIRI' == 'PAHNAPLSIIGYIR'
-const asseert = require('assert')
-asseert.equal(convert('ABCDE', 4), 'ABCED')
-asseert.equal(convert('PAYPALISHIRING', 3), 'PAHNAPLSIIGYIR')
-asseert.equal(convert('ABC', 2), 'ACB')
-asseert.equal(convert('ABCD', 2), 'ACBD')
+
+module.exports = convert
